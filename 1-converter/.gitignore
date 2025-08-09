@@ -1,0 +1,8 @@
+*.test
+*.exe
+*.exe~
+*.dll
+*.so
+.env
+*.out
+go.work
