@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"unicode"
 )
 
 func main() {
@@ -31,7 +30,7 @@ func getUserCurrentCurrencyAndAmount() (string, int32, string, error) {
 	fmt.Print("Введите целевую валюту (USD, EUR, RUR): ")
 	fmt.Scan(&targetCurrency)
 
-	if currentCurrency != "USD" || currentCurrency != "EUR" || currentCurrency != "RUR" {
+	if currentCurrency != "USD" && currentCurrency != "EUR" && currentCurrency != "RUR" {
 		return "_", 0, "_", errors.New("Ошибка, неизвестная исходная валюта, повторите ввод заново")
 	}
 
@@ -39,11 +38,11 @@ func getUserCurrentCurrencyAndAmount() (string, int32, string, error) {
 		return "_", 0, "_", errors.New("Ошибка, исходная и целевая валюта совпадают, повторите ввод заново")
 	}
 
-	if !unicode.IsDigit(currentAmount) || currentAmount <= 0 {
+	if currentAmount <= 0 {
 		return "_", 0, "_", errors.New("Ошибка, введите количество валюты заново")
 	}
 
-	if targetCurrency != "USD" || targetCurrency != "EUR" || targetCurrency != "RUR" {
+	if targetCurrency != "USD" && targetCurrency != "EUR" && targetCurrency != "RUR" {
 		return "_", 0, "_", errors.New("Ошибка, неизвестная целевая валюта, повторите ввод заново")
 	}
 
